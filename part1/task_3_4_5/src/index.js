@@ -2,6 +2,33 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 
+const App = () => {
+  const course = 'Half Stack application development'
+  const parts = [
+    {
+      name: 'Fundamentals of React',
+      exercises: 10
+    },
+    {
+      name: 'Using props to pass data',
+      exercises: 7
+    },
+    {
+      name: 'State of a component',
+      exercises: 14
+    }
+  ]
+
+  return (
+    <div>
+      <Header course={course} />
+      <Content parts={parts} />
+      <Total parts={parts} />
+    </div>
+  )
+}
+
+
 const Header = (props) => {
   return <h1>{props.course}</h1>
 }
@@ -10,9 +37,9 @@ const Header = (props) => {
 const Content = (props) => {
   return (
     <>
-      <Part text={props.part_1.name} number={props.part_1.exercises} />
-      <Part text={props.part_2.name} number={props.part_2.exercises} />
-      <Part text={props.part_3.name} number={props.part_3.exercises} />
+      <Part text={props.parts[0].name} number={props.parts[0].exercises} />
+      <Part text={props.parts[1].name} number={props.parts[1].exercises} />
+      <Part text={props.parts[2].name} number={props.parts[2].exercises} />
     </>
   )
 }
@@ -23,33 +50,8 @@ const Part = (props) => {
 
 
 const Total = (props) => {
-  const total_excercises = props.part_1.exercises + props.part_2.exercises + props.part_3.exercises
+  const total_excercises = props.parts[0]['exercises'] + props.parts[1]['exercises'] + props.parts[2]['exercises']
   return <p>Number of exercises {total_excercises}</p>
-}
-
-
-const App = () => {
-  const course = 'Half Stack application development'
-  const part1 = {
-    name: 'Fundamentals of React',
-    exercises: 10
-  }
-  const part2 = {
-    name: 'Using props to pass data',
-    exercises: 7
-  }
-  const part3 = {
-    name: 'State of a component',
-    exercises: 14
-  }
-
-  return (
-    <div>
-      <Header course={course} />
-      <Content part_1={part1}  part_2={part2} part_3={part3} />
-      <Total part_1={part1}  part_2={part2} part_3={part3} />
-    </div>
-  )
 }
 
 
