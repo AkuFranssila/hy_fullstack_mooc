@@ -15,14 +15,55 @@ const Button = ({ onClick, text }) => (
     </button>
   )
 
-const Display = ({ anecdote }) => (
+const DisplayAnecdote = ({ anecdote }) => (
     <p>
         { anecdote }
     </p>
 )
 
+const DisplayVotes = ({ points, index }) => (
+    <p>
+        has { points[index] } votes
+    </p>
+)
+
+const DisplayAnecdoteMostVotes = ({ points, anecdotes}) => {
+    console.log(points)
+    console.log(anecdotes)
+    const pointsKeys = Object.keys(points)
+    const pointsKeysInt = pointsKeys.map((pointsKeys) => parseInt(pointsKeys, 10));
+    console.log(pointsKeysInt)
+    let mostVotes = 0;
+    let mostVotesIndex = 0;
+    for (const [index, value] of pointsKeysInt.entries()) {
+      const voteCount = points[value]
+      if (voteCount > mostVotes) {
+        mostVotes = voteCount
+        mostVotesIndex = index
+      }
+    }
+
+    console.log(mostVotes)
+    console.log(mostVotesIndex)
+    return (
+        <p>
+            { anecdotes[mostVotesIndex] }
+        </p>
+    )
+}
+
 const App = ({ anecdotes }) => {
   const [selected, setSelected] = useState(0)
+  const [points, setPoints] = useState(
+      {
+          0: 0,
+          1: 0,
+          2: 0,
+          3: 0,
+          4: 0,
+          5: 0,
+      }
+  )
 
   const handleSelected = () => {
     const arrayLength = anecdotes.length -1
@@ -30,10 +71,25 @@ const App = ({ anecdotes }) => {
     setSelected(randomIntForArray)
   }
 
+  const handlePoints = () => {
+    const copyPoints = { ...points }
+    copyPoints[selected] += 1
+    setPoints(copyPoints)
+  }
+
   return (
     <div>
-      <Display anecdote={ anecdotes[selected] } />
+      <h1>
+          Anecdote of the day
+      </h1>
+      <DisplayAnecdote anecdote={ anecdotes[selected] } />
+      <DisplayVotes points={points} index={selected} />
+      <Button onClick={handlePoints} text="Vote" />
       <Button onClick={handleSelected} text="Next anecdote" />
+      <h1>
+          Anecdote with most votes
+      </h1>
+      <DisplayAnecdoteMostVotes points={points} anecdotes={anecdotes} />
     </div>
   )
 }
