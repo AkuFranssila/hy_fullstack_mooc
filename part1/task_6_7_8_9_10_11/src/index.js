@@ -20,6 +20,13 @@ const CreateStatistics = (props) => {
   const allVotes = props.good + props.neutral + props.bad
   const avgScore = (props.good - props.bad) / allVotes
   const goodPercentage = props.good / allVotes * 100
+  if (allVotes === 0) {
+    return (
+      <div>
+        No feedback given
+      </div>
+    )
+  }
   return (
     <div>
       <Stat name={"Good:"} count={props.good} />
