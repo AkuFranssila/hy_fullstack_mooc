@@ -11,7 +11,11 @@ const Button = ({ onClick, text }) => (
 
 const Stat = ({ name, count }) => {
   return (
-    <p>{name} {count}</p>
+    <tr>
+      <td>
+        {name} {count}
+      </td>
+    </tr>
   )
 }
 
@@ -28,14 +32,14 @@ const CreateStatistics = (props) => {
     )
   }
   return (
-    <div>
+    <table>
       <Stat name={"Good:"} count={props.good} />
       <Stat name={"Neutral:"} count={props.neutral} />
       <Stat name={"Bad:"} count={props.bad} />
       <Stat name={"All:"} count={allVotes} />
       <Stat name={"Average:"} count={avgScore} />
       <Stat name={"Positive:"} count={goodPercentage} />
-    </div>
+    </table>
   )
 }
 
