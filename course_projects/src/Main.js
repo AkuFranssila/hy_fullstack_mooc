@@ -6,6 +6,7 @@ import {
   Link
 } from "react-router-dom";
 import Part1 from './course_parts/part1/part1'
+import Part2 from './course_parts/part2/part2'
 
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).
@@ -49,7 +50,7 @@ export default function Navigation() {
             <Part1 />
           </Route>
           <Route path="/part2">
-            <Home />
+            <Part2 />
           </Route>
         </Switch>
       </div>
