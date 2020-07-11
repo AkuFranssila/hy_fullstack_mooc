@@ -1,29 +1,64 @@
 import React from 'react'
 
 const App = () => {
-  const course = {
-    name: 'Half Stack application development',
-    parts: [
-      {
-        name: 'Fundamentals of React',
-        exercises: 10
-      },
-      {
-        name: 'Using props to pass data',
-        exercises: 7
-      },
-      {
-        name: 'State of a component',
-        exercises: 14
-      }
-    ]
+  const courses = [
+    {
+      name: 'Half Stack application development',
+      parts: [
+        {
+          name: 'Fundamentals of React',
+          exercises: 10
+        },
+        {
+          name: 'Using props to pass data',
+          exercises: 7
+        },
+        {
+          name: 'State of a component',
+          exercises: 14
+        },
+        {
+          name: 'Redux',
+          exercises: 11
+        }
+      ]
+    },
+    {
+      name: 'ReactJS',
+      parts: [
+        {
+          name: 'Reacting with React',
+          exercises: 55
+        },
+        {
+          name: 'Not reacting with React',
+          exercises: 22
+        },
+        {
+          name: 'Stating states',
+          exercises: 5
+        },
+        {
+          name: 'Reducing Reduxes',
+          exercises: 1
+        }
+      ]
+    }
+  ]
+
+  const createCourses = () => {
+    let table = []
+    courses.map(function(course, i){
+      table.push(<Header {...course} />)
+      table.push(<Content {...course} />)
+      table.push(<Total {...course} />)
+    })
+    return table
   }
 
-  return (
+  return(
     <div>
-      <Header {...course} />
-      <Content {...course} />
-      <Total {...course} />
+      {createCourses()}
     </div>
   )
 }
@@ -35,22 +70,29 @@ const Header = (props) => {
 
 
 const Content = (props) => {
+  const parts = props.parts.map(function(part, i){
+    console.log(i)
+    return <Part text={part.name} number={part.exercises} key={i} id={i}/>
+  })
+
   return (
     <>
-      <Part text={props.parts[0].name} number={props.parts[0].exercises} />
-      <Part text={props.parts[1].name} number={props.parts[1].exercises} />
-      <Part text={props.parts[2].name} number={props.parts[2].exercises} />
+      {parts}
     </>
   )
 }
 
 const Part = (props) => {
-  return <p>{props.text} {props.number}</p>
+  return <p key={props.id}>{props.text} {props.number}</p>
 }
 
-
 const Total = (props) => {
-  const total_excercises = props.parts[0]['exercises'] + props.parts[1]['exercises'] + props.parts[2]['exercises']
+  let total_excercises = 0
+
+  props.parts.map(function(part){
+    return total_excercises += part.exercises
+  })
+
   return <p>Number of exercises {total_excercises}</p>
 }
 

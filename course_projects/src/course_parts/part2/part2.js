@@ -15,10 +15,10 @@ export default function Navigation() {
       <div>
         <ul>
           <li>
-            <Link to="/course_example">Course example</Link>
+            <Link to="/part2/course_example">Course example</Link>
           </li>
           <li>
-            <Link to="/task1-5">Tasks 1-5 (Course information continuation)</Link>
+            <Link to="/part2/task1-5">Tasks 1-5 (Course information continuation)</Link>
           </li>
         </ul>
 
@@ -32,10 +32,10 @@ export default function Navigation() {
           of them to render at a time
         */}
         <Switch>
-          <Route path="/course_example">
+          <Route path="/part2/course_example">
             <CourseExample notes={notes}/>
           </Route>
-          <Route path="/task1-5">
+          <Route path="/part2/task1-5">
             <Task1_5 />
           </Route>
         </Switch>

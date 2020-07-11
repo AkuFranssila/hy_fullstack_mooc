@@ -17,16 +17,16 @@ export default function Navigation() {
       <div>
         <ul>
           <li>
-            <Link to="/course_example">Course example</Link>
+            <Link to="/part1/course_example">Course example</Link>
           </li>
           <li>
-            <Link to="/task3-5">Tasks 3-5</Link>
+            <Link to="/part1/task3-5">Tasks 3-5</Link>
           </li>
           <li>
-            <Link to="/task6-11">Tasks 6-11 (Unicafe)</Link>
+            <Link to="/part1/task6-11">Tasks 6-11 (Unicafe)</Link>
           </li>
           <li>
-            <Link to="/task12-14">Tasks 12-14 (Anecdotes)</Link>
+            <Link to="/part1/task12-14">Tasks 12-14 (Anecdotes)</Link>
           </li>
         </ul>
 
@@ -40,16 +40,16 @@ export default function Navigation() {
           of them to render at a time
         */}
         <Switch>
-          <Route path="/course_example">
+          <Route path="/part1/course_example">
             <CourseExample />
           </Route>
-          <Route path="/task3-5">
+          <Route path="/part1/task3-5">
             <Task3_5 />
           </Route>
-          <Route path="/task6-11">
+          <Route path="/part1/task6-11">
             <Task6_11 />
           </Route>
-          <Route path="/task12-14">
+          <Route path="/part1/task12-14">
             <Task12_14 anecdotes={ anecdotes }/>
           </Route>
         </Switch>
