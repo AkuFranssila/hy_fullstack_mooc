@@ -8,6 +8,7 @@ import {
 import CourseExample from './task_course_example'
 import { notes } from './task_course_example'
 import Task1_5 from './task_1-5'
+import Task6_10 from './task_6-10'
 
 export default function Navigation() {
   return (
@@ -19,6 +20,9 @@ export default function Navigation() {
           </li>
           <li>
             <Link to="/part2/task1-5">Tasks 1-5 (Course information continuation)</Link>
+          </li>
+          <li>
+            <Link to="/part2/task6-10">Tasks 6-10 (Course information continuation)</Link>
           </li>
         </ul>
 
@@ -37,6 +41,9 @@ export default function Navigation() {
           </Route>
           <Route path="/part2/task1-5">
             <Task1_5 />
+          </Route>
+          <Route path="/part2/task6-10">
+            <Task6_10 />
           </Route>
         </Switch>
       </div>
