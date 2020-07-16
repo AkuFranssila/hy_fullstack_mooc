@@ -8,6 +8,8 @@ const Person = ({ person }) => {
 }
 
 
+
+
 const App = () => {
   const [persons, setPersons] = useState([
     { name: 'Arto Hellas', number: '040-123456' },
@@ -24,9 +26,22 @@ const App = () => {
       name: newName,
       number: '-',
     }
-  
-    setPersons(persons.concat(personObject))
-    setNewName('')
+
+    let nameExists = false
+
+
+    persons.map((person) => {
+      if (newName === person.name){
+        nameExists = true
+      }
+    })
+
+    if (nameExists) {
+      window.alert(`${newName} is already added to phonebook`)
+    } else {
+      setPersons(persons.concat(personObject))
+      setNewName('')
+    }
   }
 
 
