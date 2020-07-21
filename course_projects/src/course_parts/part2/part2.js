@@ -6,9 +6,9 @@ import {
   Link
 } from "react-router-dom";
 import CourseExample from './task_course_example'
-import { notes } from './task_course_example'
 import Task1_5 from './task_1-5'
 import Task6_10 from './task_6-10'
+import Task11 from './task_11'
 
 export default function Navigation() {
   return (
@@ -22,7 +22,10 @@ export default function Navigation() {
             <Link to="/part2/task1-5">Tasks 1-5 (Course information continuation)</Link>
           </li>
           <li>
-            <Link to="/part2/task6-10">Tasks 6-10 (Course information continuation)</Link>
+            <Link to="/part2/task6-10">Tasks 6-10 (Phonebook)</Link>
+          </li>
+          <li>
+            <Link to="/part2/task11">Task 11 (Phonebook step 6)</Link>
           </li>
         </ul>
 
@@ -37,13 +40,16 @@ export default function Navigation() {
         */}
         <Switch>
           <Route path="/part2/course_example">
-            <CourseExample notes={notes}/>
+            <CourseExample />
           </Route>
           <Route path="/part2/task1-5">
             <Task1_5 />
           </Route>
           <Route path="/part2/task6-10">
             <Task6_10 />
+          </Route>
+          <Route path="/part2/task11">
+            <Task11 />
           </Route>
         </Switch>
       </div>
